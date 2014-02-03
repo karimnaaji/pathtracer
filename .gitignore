@@ -1,0 +1,27 @@
+#cmake
+CmakeCache.txt
+Makefile
+CMakeFiles
+cmake_install.cmake
+
+#compiled source
+*.o
+*.out
+*.a
+
+#latex
+*.aux
+*.synctex.gz
+
+#other files
+*.swp
+*.log
+
+#os file
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
