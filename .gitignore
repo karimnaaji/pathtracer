@@ -15,6 +15,7 @@ cmake_install.cmake
 
 #other files
 *.swp
+*.swo
 *.log
 
 #os file
