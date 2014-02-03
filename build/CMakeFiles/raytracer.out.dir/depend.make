@@ -16,6 +16,7 @@ CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/camera.h
 CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/intersection.h
 CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/material.h
 CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/object.h
+CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/plane.h
 CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/ray.h
 CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/renderer.h
 CMakeFiles/raytracer.out.dir/src/main.cpp.o: ../src/raytracer/scene.h
@@ -68,8 +69,23 @@ CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o: ../src/raytracer.h
 CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o: ../src/raytracer/camera.cpp
 CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o: ../src/raytracer/camera.h
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o: ../src/raytracer/intersection.cpp
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o: ../src/raytracer/intersection.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/coremaths.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/mathshelpers.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/matrix3.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/matrix4.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/vec2.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/vec3.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/math/vec4.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/netpbm/netpbmloader.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/netpbm/pgmimage.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/netpbm/ppmimage.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/intersection.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/material.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/object.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/plane.cpp
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/plane.h
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/ray.h
 
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/math/coremaths.h
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/math/mathshelpers.h
@@ -86,6 +102,7 @@ CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/came
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/intersection.h
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/material.h
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/object.h
+CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/plane.h
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/ray.h
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/renderer.cpp
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/renderer.h
@@ -107,6 +124,7 @@ CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/camera.
 CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/intersection.h
 CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/material.h
 CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/object.h
+CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/plane.h
 CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/ray.h
 CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/scene.cpp
 CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o: ../src/raytracer/scene.h

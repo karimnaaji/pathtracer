@@ -13,7 +13,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/netpbm/pgmimage.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/netpbm/pgmimage.cpp.o"
   "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/netpbm/ppmimage.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/netpbm/ppmimage.cpp.o"
   "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/camera.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o"
-  "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o"
+  "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o"
   "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/renderer.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o"
   "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/scene.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o"
   "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/sphere.cpp" "/Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles/raytracer.out.dir/src/raytracer/sphere.cpp.o"

@@ -8,6 +8,8 @@ class Sphere : public Object {
         Sphere(Vec3 &p, Vec3 &col, Vec3 &emis) : Object(p, col, emis) { }
         ~Sphere() { }
         bool Intersect(const Ray &ray, Intersection *isect);
+        ostream& Description(ostream& o) const;
+        Vec3 Normal(Vec3 p) const;
 };
 
 #endif

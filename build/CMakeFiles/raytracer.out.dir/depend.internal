@@ -17,6 +17,7 @@ CMakeFiles/raytracer.out.dir/src/main.cpp.o
  ../src/raytracer/intersection.h
  ../src/raytracer/material.h
  ../src/raytracer/object.h
+ ../src/raytracer/plane.h
  ../src/raytracer/ray.h
  ../src/raytracer/renderer.h
  ../src/raytracer/scene.h
@@ -68,9 +69,24 @@ CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o
  ../src/raytracer.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/camera.cpp
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/camera.h
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o
- /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.cpp
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o
+ ../src/math/coremaths.h
+ ../src/math/mathshelpers.h
+ ../src/math/matrix3.h
+ ../src/math/matrix4.h
+ ../src/math/vec2.h
+ ../src/math/vec3.h
+ ../src/math/vec4.h
+ ../src/netpbm/netpbmloader.h
+ ../src/netpbm/pgmimage.h
+ ../src/netpbm/ppmimage.h
+ ../src/raytracer.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.h
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/material.h
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/object.h
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.cpp
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.h
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/ray.h
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o
  ../src/math/coremaths.h
  ../src/math/mathshelpers.h
@@ -87,6 +103,7 @@ CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/material.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/object.h
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/ray.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/renderer.cpp
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/renderer.h
@@ -108,6 +125,7 @@ CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/material.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/object.h
+ /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/ray.h
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/scene.cpp
  /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/scene.h

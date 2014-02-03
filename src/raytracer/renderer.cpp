@@ -3,8 +3,8 @@
 void Renderer::Render(const Scene *scene) {
     NetPBMLoader loader;
 
-    int width = 640;
-    int height = 480;
+    int width = 800;
+    int height = 600;
 
     PPMImage img(width, height);
 
@@ -21,14 +21,14 @@ void Renderer::Render(const Scene *scene) {
             Vec3 col = Vec3::Zero();
 
             rd = rd.Normalize();
-
-            Ray r = Ray(cam.GetPos(), rd);
-    
             Intersection* isect = new Intersection();
+            isect->spos = Vec2(x, y);
+            Ray r = Ray(cam.GetPos(), rd);
 
             if(scene->Intersect(r, isect)) {
                 if(isect->t > 0.0) {
-                    col = Vec3(255.f);
+                    Object *obj = isect->obj;
+                    col = obj->color * Vec3::Abs(isect->n).y;
                 }
             }
 

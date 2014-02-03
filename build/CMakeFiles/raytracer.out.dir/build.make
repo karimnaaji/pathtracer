@@ -259,28 +259,28 @@ CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o.provides: CMakeFiles/ray
 
 CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o.provides.build: CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o: CMakeFiles/raytracer.out.dir/flags.make
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o: ../src/raytracer/intersection.cpp
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: CMakeFiles/raytracer.out.dir/flags.make
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o: ../src/raytracer/plane.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/karimnaaji/Dropbox/programmation/projets/raytracer/build/CMakeFiles $(CMAKE_PROGRESS_10)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o -c /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o -c /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.cpp
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.cpp > CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.i
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.cpp > CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.i
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/intersection.cpp -o CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.s
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/karimnaaji/Dropbox/programmation/projets/raytracer/src/raytracer/plane.cpp -o CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.s
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.requires:
-.PHONY : CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.requires
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.requires:
+.PHONY : CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.requires
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.provides: CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.requires
-	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.provides.build
-.PHONY : CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.provides
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.provides: CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.requires
+	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.provides.build
+.PHONY : CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.provides
 
-CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.provides.build: CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o
+CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.provides.build: CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o
 
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: CMakeFiles/raytracer.out.dir/flags.make
 CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o: ../src/raytracer/renderer.cpp
@@ -362,7 +362,7 @@ raytracer_out_OBJECTS = \
 "CMakeFiles/raytracer.out.dir/src/netpbm/pgmimage.cpp.o" \
 "CMakeFiles/raytracer.out.dir/src/netpbm/ppmimage.cpp.o" \
 "CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o" \
-"CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o" \
+"CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o" \
 "CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o" \
 "CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o" \
 "CMakeFiles/raytracer.out.dir/src/raytracer/sphere.cpp.o"
@@ -379,7 +379,7 @@ raytracer.out: CMakeFiles/raytracer.out.dir/src/netpbm/netpbmloader.cpp.o
 raytracer.out: CMakeFiles/raytracer.out.dir/src/netpbm/pgmimage.cpp.o
 raytracer.out: CMakeFiles/raytracer.out.dir/src/netpbm/ppmimage.cpp.o
 raytracer.out: CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o
-raytracer.out: CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o
+raytracer.out: CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o
 raytracer.out: CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o
 raytracer.out: CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o
 raytracer.out: CMakeFiles/raytracer.out.dir/src/raytracer/sphere.cpp.o
@@ -401,7 +401,7 @@ CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/netpbm/n
 CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/netpbm/pgmimage.cpp.o.requires
 CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/netpbm/ppmimage.cpp.o.requires
 CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o.requires
-CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o.requires
+CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o.requires
 CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o.requires
 CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o.requires
 CMakeFiles/raytracer.out.dir/requires: CMakeFiles/raytracer.out.dir/src/raytracer/sphere.cpp.o.requires

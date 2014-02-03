@@ -8,7 +8,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/raytracer.out.dir/src/netpbm/pgmimage.cpp.o"
   "CMakeFiles/raytracer.out.dir/src/netpbm/ppmimage.cpp.o"
   "CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.o"
-  "CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o"
+  "CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o"
   "CMakeFiles/raytracer.out.dir/src/raytracer/renderer.cpp.o"
   "CMakeFiles/raytracer.out.dir/src/raytracer/scene.cpp.o"
   "CMakeFiles/raytracer.out.dir/src/raytracer/sphere.cpp.o"

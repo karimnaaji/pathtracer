@@ -19,9 +19,16 @@ void Scene::AddObject(Object* object) {
 bool Scene::Intersect(const Ray& ray, Intersection *isect) const {
     vector<Object*>::iterator it;
     bool hit = false;
+
     for(it = objects->begin(); it != objects->end(); ++it) {
-        hit |= (*it)->Intersect(ray, isect);
+        Ray rt;
+        
+        rt.o = (*it)->transform * ray.o;
+        rt.d = (*it)->transform * ray.d;
+        rt.d = rt.d.Normalize();
+        hit |= (*it)->Intersect(rt, isect);
     }
+
     return hit;
 }
 

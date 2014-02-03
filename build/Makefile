@@ -330,29 +330,29 @@ src/raytracer/camera.cpp.s:
 	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/camera.cpp.s
 .PHONY : src/raytracer/camera.cpp.s
 
-src/raytracer/intersection.o: src/raytracer/intersection.cpp.o
-.PHONY : src/raytracer/intersection.o
+src/raytracer/plane.o: src/raytracer/plane.cpp.o
+.PHONY : src/raytracer/plane.o
 
 # target to build an object file
-src/raytracer/intersection.cpp.o:
-	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.o
-.PHONY : src/raytracer/intersection.cpp.o
+src/raytracer/plane.cpp.o:
+	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.o
+.PHONY : src/raytracer/plane.cpp.o
 
-src/raytracer/intersection.i: src/raytracer/intersection.cpp.i
-.PHONY : src/raytracer/intersection.i
+src/raytracer/plane.i: src/raytracer/plane.cpp.i
+.PHONY : src/raytracer/plane.i
 
 # target to preprocess a source file
-src/raytracer/intersection.cpp.i:
-	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.i
-.PHONY : src/raytracer/intersection.cpp.i
+src/raytracer/plane.cpp.i:
+	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.i
+.PHONY : src/raytracer/plane.cpp.i
 
-src/raytracer/intersection.s: src/raytracer/intersection.cpp.s
-.PHONY : src/raytracer/intersection.s
+src/raytracer/plane.s: src/raytracer/plane.cpp.s
+.PHONY : src/raytracer/plane.s
 
 # target to generate assembly for a file
-src/raytracer/intersection.cpp.s:
-	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/intersection.cpp.s
-.PHONY : src/raytracer/intersection.cpp.s
+src/raytracer/plane.cpp.s:
+	$(MAKE) -f CMakeFiles/raytracer.out.dir/build.make CMakeFiles/raytracer.out.dir/src/raytracer/plane.cpp.s
+.PHONY : src/raytracer/plane.cpp.s
 
 src/raytracer/renderer.o: src/raytracer/renderer.cpp.o
 .PHONY : src/raytracer/renderer.o
@@ -462,9 +462,9 @@ help:
 	@echo "... src/raytracer/camera.o"
 	@echo "... src/raytracer/camera.i"
 	@echo "... src/raytracer/camera.s"
-	@echo "... src/raytracer/intersection.o"
-	@echo "... src/raytracer/intersection.i"
-	@echo "... src/raytracer/intersection.s"
+	@echo "... src/raytracer/plane.o"
+	@echo "... src/raytracer/plane.i"
+	@echo "... src/raytracer/plane.s"
 	@echo "... src/raytracer/renderer.o"
 	@echo "... src/raytracer/renderer.i"
 	@echo "... src/raytracer/renderer.s"

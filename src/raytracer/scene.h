@@ -3,6 +3,7 @@
 
 #include "object.h"
 #include "sphere.h"
+#include "plane.h"
 #include "intersection.h"
 #include "camera.h"
 

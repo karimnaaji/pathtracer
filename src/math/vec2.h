@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 
+using std::ostream;
+
 class Vec2 {
     public:
         float x;
@@ -29,5 +31,11 @@ class Vec2 {
 
         float length()const;
         Vec2& normalize();
+
+
+		inline friend ostream& operator<<(ostream& o, const Vec2& vec) {
+            o << "(" << vec.x << ", " << vec.y << ")";
+            return o;
+        }
 };
 #endif 
