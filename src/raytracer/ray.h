@@ -2,6 +2,7 @@
 #define __RAY_H__
 
 #include "raytracer.h"
+#include <iostream>
 
 class Ray {
     public:
@@ -16,7 +17,12 @@ class Ray {
         Vec3 d;
         mutable float mint;
         mutable float maxt;
-        int depth;
+        int depth;	
+        
+        inline friend ostream& operator<<(ostream& o, const Ray& r) {
+            o << "ray d: " << r.d << " o: " << r.o;
+            return o;
+        }
 };
 
 #endif

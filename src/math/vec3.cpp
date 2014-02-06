@@ -63,6 +63,11 @@ Vec3 Vec3::operator-(const Vec3& v) const {
     return t;
 }
 
+Vec3 Vec3::operator-() const {
+    Vec3 t = *this * -1.0f;
+    return t;
+}
+
 Vec3& Vec3::operator*=(const float a) {
     x *= a;
     y *= a;

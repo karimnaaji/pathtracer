@@ -14,29 +14,67 @@ void Renderer::Render(const Scene *scene) {
         float xval = x / (float) width;
         for(int y = 0; y < height; ++y) {
             float yval = y / (float) height;
-
             Vec2 uv = Vec2(xval, yval);
             Vec2 p = -2.0f * uv + 1.0f; 
-            Vec3 rd = cam.GetRight() * p.x + cam.GetUp() * p.y + cam.GetDir();
-            Vec3 col = Vec3::Zero();
-
-            rd = rd.Normalize();
-            Intersection* isect = new Intersection();
-            isect->spos = Vec2(x, y);
+            Vec3 rd = (cam.GetRight() * p.x + cam.GetUp() * p.y + cam.GetDir()).Normalize();
             Ray r = Ray(cam.GetPos(), rd);
+            Vec3 col = Ri(scene, r, 0, Vec2(x, y));
 
-            if(scene->Intersect(r, isect)) {
-                if(isect->t > 0.0) {
-                    Object *obj = isect->obj;
-                    col = obj->color * Vec3::Abs(isect->n).y;
-                }
-            }
-
-            delete isect;
-
-            img(x, y) = col;
+            img(x, y) = col * 255.0f;
         }
     }
 
     loader.SavePPM(img, "image");
+}
+
+Vec3 Renderer::Ri(const Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller) const {
+    Intersection isect;
+    isect.spos = pixelPos;
+
+    if(depth > 0 && isect.spos.x == 200 && isect.spos.y == 260) {
+        cout << "ray " << ray << endl;
+    }
+
+    if(!scene->Intersect(ray, &isect, caller)) {
+        // background color
+        return Vec3::Zero();
+    } 
+
+    Object *obj = isect.obj;
+    Vec3 c = obj->color; 
+
+    if(depth > 5) {
+        return obj->emission;
+    }
+
+    switch(obj->material) {
+        case E_DIFFUSE: 
+            {
+            }
+            break;
+        case E_SPECULAR:
+            {
+                Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
+                d.Normalize();
+                Ray r = Ray(isect.p, d);
+                        
+                /*cout << endl;
+                cout << "depth: " << depth << endl;
+                cout << "o ray: " << ray << endl;
+                cout << "ray(isect.t)" << ray(isect.t) << endl;
+                cout << r << endl;
+                cout << *obj << endl;
+                cout << isect << endl;
+                cout << endl;*/
+
+                return obj->emission + c * 0.99 * Ri(scene, r, depth + 1, pixelPos, obj);
+            }
+            break;
+        case E_REFRACT:
+            {
+            }
+            break;
+    }
+
+    return obj->emission + c * Clamp(isect.n.y, 0.2, 1.0);
 }

@@ -12,7 +12,7 @@ class Scene {
         Scene(Camera &cam);
         ~Scene();
 
-        bool Intersect(const Ray &ray, Intersection *isect) const;
+        bool Intersect(const Ray &ray, Intersection *isect, Object *caller) const;
         void AddObject(Object* object);
         const Camera& SceneCamera() const;
 

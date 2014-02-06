@@ -12,7 +12,9 @@ class Intersection {
         Intersection() : t(0.0), obj(NULL) {}
 
 		inline friend ostream& operator<<(ostream& o, const Intersection& isect) {
-            o << "Intersection at " << isect.spos << ", t: " << isect.t;
+            o << "Intersection at " << isect.spos << ", t: " << isect.t << endl;
+            o << "  n: " << isect.n << endl;
+            o << "  p: " << isect.p;
             return o;
         }
 

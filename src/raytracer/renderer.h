@@ -11,6 +11,7 @@ class Renderer {
     public:
         Renderer() {}
         void Render(const Scene* scene);
+        Vec3 Ri(const Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller = NULL) const;
 };
 
 #endif

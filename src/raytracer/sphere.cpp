@@ -1,8 +1,9 @@
 #include "sphere.h"
 
 bool Sphere::Intersect(const Ray &ray, Intersection *isect) {
-    Vec3 oc = ray.o - position;
-    float b = 2.0 * oc.Dot(ray.d);
+    Ray rt = ApplyTransform(ray);
+    Vec3 oc = rt.o - position;
+    float b = 2.0 * oc.Dot(rt.d);
     float c = oc.Dot(oc) - 1.0;
     float delta = b*b - 4.0*c;
 
@@ -11,7 +12,7 @@ bool Sphere::Intersect(const Ray &ray, Intersection *isect) {
 
     float t = (-b - sqrt(delta)) * 0.5;
 
-    if(!isect->obj || t < isect->t) {
+    if((!isect->obj || t < isect->t) && t > 0.0) {
         FillIntersection(isect, t, ray);
         return true;
     }

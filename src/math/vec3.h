@@ -2,6 +2,9 @@
 #define __VEC3_H__
 
 #include <cmath>
+#include <iostream>
+
+using std::ostream;
 
 class Vec3 {
     public:
@@ -22,6 +25,7 @@ class Vec3 {
         Vec3 operator+(const Vec3& v) const;        
         Vec3& operator-=(const Vec3& v);
         Vec3 operator-(const Vec3& v) const;        
+        Vec3 operator-() const;
         Vec3& operator*=(const float a);
         Vec3 operator*(const float a)const;
         Vec3 operator*(const Vec3& v) const;
@@ -36,6 +40,11 @@ class Vec3 {
         float Length() const;
         float Dot(const Vec3& v) const;
         Vec3& Normalize();
+
+		inline friend ostream& operator<<(ostream& o, const Vec3& vec) {
+            o << "(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
+            return o;
+        }
 };
 
 #endif 
