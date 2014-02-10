@@ -6,12 +6,18 @@
 #include "netpbmloader.h"
 #include "sphere.h"
 #include "object.h"
+#include "color.h"
+
+#define AA_MAX_DEPTH 2
 
 class Renderer {
     public:
-        Renderer() {}
-        void Render(const Scene* scene);
-        Vec3 Ri(const Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller = NULL) const;
+        Renderer(int samples = 1) : sppxl(samples) {}
+        void Render(Scene* scene, const Vec2 &size);
+        Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller = NULL) const;
+        Color AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int depth) const;
+
+        int sppxl;
 };
 
 #endif

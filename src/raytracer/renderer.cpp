@@ -1,39 +1,57 @@
 #include "renderer.h"
 
-void Renderer::Render(const Scene *scene) {
+void Renderer::Render(Scene *scene, const Vec2 &size) {
     NetPBMLoader loader;
 
-    int width = 800;
-    int height = 600;
+    int width = size.x;
+    int height = size.y;
+
+    float pxw = 1.0 / (float) width;
+    float pxh = 1.0 / (float) height;
 
     PPMImage img(width, height);
 
-    Camera cam = scene->SceneCamera();
-
     for(int x = 0; x < width; ++x) {
         float xval = x / (float) width;
+        fprintf(stdout, "\rRendering %5.2f%%", 100.0 * (x / (float) width));
         for(int y = 0; y < height; ++y) {
             float yval = y / (float) height;
-            Vec2 uv = Vec2(xval, yval);
-            Vec2 p = -2.0f * uv + 1.0f; 
-            Vec3 rd = (cam.GetRight() * p.x + cam.GetUp() * p.y + cam.GetDir()).Normalize();
-            Ray r = Ray(cam.GetPos(), rd);
-            Vec3 col = Ri(scene, r, 0, Vec2(x, y));
+            Color c;
 
-            img(x, y) = col * 255.0f;
+            for(int s = 0; s < sppxl; ++s) 
+                c += AverageColor(scene, xval, yval, pxw, pxh, 0);
+            img(x, y) = (c / (float) sppxl) * 255.0; 
         }
     }
+    cout << endl;
 
     loader.SavePPM(img, "image");
 }
 
-Vec3 Renderer::Ri(const Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller) const {
+Color Renderer::AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int aadepth) const {
+    Camera cam = scene->SceneCamera();
+
+    if(aadepth == AA_MAX_DEPTH) {
+        if(sppxl > 1) {
+            x += (float) rand() / RAND_MAX * pxw - pxw / 2.0;   
+            y += (float) rand() / RAND_MAX * pxh - pxh / 2.0;
+        }
+        return Ri(scene, cam.PrimaryRay(Vec2(x, y)), 0, Vec2(x, y));
+    }
+    
+    Color c;
+
+    c += AverageColor(scene, x - pxw / 2.0, y - pxh / 2.0, pxw / 2.0, pxh / 2.0, aadepth + 1);
+    c += AverageColor(scene, x + pxw / 2.0, y - pxh / 2.0, pxw / 2.0, pxh / 2.0, aadepth + 1);
+    c += AverageColor(scene, x - pxw / 2.0, y + pxh / 2.0, pxw / 2.0, pxh / 2.0, aadepth + 1);
+    c += AverageColor(scene, x + pxw / 2.0, y + pxh / 2.0, pxw / 2.0, pxh / 2.0, aadepth + 1);
+
+    return c / 4.0;
+}
+
+Color Renderer::Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller) const {
     Intersection isect;
     isect.spos = pixelPos;
-
-    if(depth > 0 && isect.spos.x == 200 && isect.spos.y == 260) {
-        cout << "ray " << ray << endl;
-    }
 
     if(!scene->Intersect(ray, &isect, caller)) {
         // background color
@@ -41,7 +59,7 @@ Vec3 Renderer::Ri(const Scene *scene, const Ray& ray, int depth, const Vec2 &pix
     } 
 
     Object *obj = isect.obj;
-    Vec3 c = obj->color; 
+    Color c = obj->color; 
 
     if(depth > 5) {
         return obj->emission;
@@ -57,21 +75,13 @@ Vec3 Renderer::Ri(const Scene *scene, const Ray& ray, int depth, const Vec2 &pix
                 Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
                 d.Normalize();
                 Ray r = Ray(isect.p, d);
-                        
-                /*cout << endl;
-                cout << "depth: " << depth << endl;
-                cout << "o ray: " << ray << endl;
-                cout << "ray(isect.t)" << ray(isect.t) << endl;
-                cout << r << endl;
-                cout << *obj << endl;
-                cout << isect << endl;
-                cout << endl;*/
-
                 return obj->emission + c * 0.99 * Ri(scene, r, depth + 1, pixelPos, obj);
             }
             break;
         case E_REFRACT:
             {
+                Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
+
             }
             break;
     }

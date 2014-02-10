@@ -2,9 +2,11 @@
 #define __CAMERA_H__
 
 #include "raytracer.h"
+#include "ray.h"
 
 class Camera {
     public:
+        Camera() {}
         Camera(Vec3 &pos) : cp(pos) { }
         void LookAt(const Vec3 &p);
 
@@ -12,6 +14,8 @@ class Camera {
         Vec3 GetUp() const { return cu; }
         Vec3 GetDir() const { return cd; }
         Vec3 GetPos() const { return cp; }
+
+        Ray PrimaryRay(const Vec2& sp) const;
 
     private:
         Vec3 cp;

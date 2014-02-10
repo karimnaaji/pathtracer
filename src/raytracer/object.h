@@ -6,10 +6,11 @@
 #include "material.h"
 #include "raytracer.h"
 #include "matrix4.h"
+#include "color.h"
 
 class Object {
     public:
-        Object(Vec3 pos, Vec3 col, Vec3 emis) :
+        Object(Vec3 pos, Color col, Color emis) :
             position(pos), color(col), emission(emis) { }
         virtual bool Intersect(const Ray &ray, Intersection *isect) = 0;
         virtual ~Object() { }
@@ -30,8 +31,8 @@ class Object {
         }
 
         Vec3 position;
-        Vec3 color;
-        Vec3 emission;
+        Color color;
+        Color emission;
         MaterialType material;
         Matrix4 transform;
 

@@ -2,6 +2,7 @@
 #define __MATRIX4_H__
 
 #include <iostream>
+#include <string.h>
 #include "vec3.h"
 #include "vec4.h"
 #include "mathshelpers.h"

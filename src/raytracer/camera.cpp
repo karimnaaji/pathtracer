@@ -6,3 +6,10 @@ void Camera::LookAt(const Vec3 &p) {
     cr = cd.Cross(up).Normalize();
     cu = cr.Cross(cd).Normalize();
 }
+
+Ray Camera::PrimaryRay(const Vec2& sp) const {
+    Vec2 p = -2.0f * sp + 1.0f; 
+    Vec3 rd = (cr * p.x + cu * p.y + cd).Normalize();
+    Ray r = Ray(cp, rd);
+    return r;
+}

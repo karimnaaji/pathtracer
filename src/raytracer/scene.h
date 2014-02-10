@@ -9,11 +9,13 @@
 
 class Scene {
     public :
+        Scene();
         Scene(Camera &cam);
         ~Scene();
 
         bool Intersect(const Ray &ray, Intersection *isect, Object *caller) const;
         void AddObject(Object* object);
+        void SetCamera(const Camera &cam) { camera = cam; }
         const Camera& SceneCamera() const;
 
     private:

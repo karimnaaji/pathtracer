@@ -5,6 +5,10 @@ Scene::Scene(Camera &cam)
     objects = new vector<Object*>();
 }
 
+Scene::Scene() {
+    objects = new vector<Object*>();
+}
+
 Scene::~Scene() {
     vector<Object*>::iterator it;
     for(it = objects->begin(); it != objects->end(); ++it) 
