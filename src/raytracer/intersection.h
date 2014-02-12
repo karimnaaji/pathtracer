@@ -1,9 +1,7 @@
 #ifndef __INTERSECTION_H__
 #define __INTERSECTION_H__
 
-#include <iostream>
-#include "raytracer.h"
-#include "object.h"
+#include "config.h"
 
 class Object;
 

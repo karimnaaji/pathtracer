@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iostream>
+#include "mathshelpers.h"
 
 using std::ostream;
 
@@ -34,6 +35,7 @@ class Vec3 {
         friend Vec3 operator*(const float a, const Vec3& v);
 
         static Vec3 Zero();
+        static Vec3 VClamp(Vec3 v, float low, float high);
         static Vec3 Abs(Vec3 v);
         static Vec3 Up();
         Vec3 Cross(const Vec3& v) const;

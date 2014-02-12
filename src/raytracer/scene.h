@@ -1,26 +1,27 @@
 #ifndef __SCENE_H__
 #define __SCENE_H__
 
-#include "object.h"
-#include "sphere.h"
-#include "plane.h"
-#include "intersection.h"
 #include "camera.h"
+#include "object.h"
+#include "config.h"
 
 class Scene {
     public :
         Scene();
-        Scene(Camera &cam);
+        Scene(Camera *cam);
         ~Scene();
 
         bool Intersect(const Ray &ray, Intersection *isect, Object *caller) const;
         void AddObject(Object* object);
-        void SetCamera(const Camera &cam) { camera = cam; }
-        const Camera& SceneCamera() const;
+        void SetCamera(Camera *cam) { camera = cam; }
+        Camera* GetCamera() const { return camera; }
+        vector<const Object*> Lights() const;
+        vector<const Object*> Objects() const;
 
     private:
-        Camera camera;
+        Camera *camera;
         vector<Object*> *objects;
+        vector<Object*> *lights;
 };
 
 #endif

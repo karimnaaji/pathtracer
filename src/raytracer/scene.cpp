@@ -1,12 +1,14 @@
 #include "scene.h"
 
-Scene::Scene(Camera &cam) 
+Scene::Scene(Camera *cam) 
     : camera(cam) {
     objects = new vector<Object*>();
+    lights = new vector<Object*>();
 }
 
 Scene::Scene() {
     objects = new vector<Object*>();
+    lights = new vector<Object*>();
 }
 
 Scene::~Scene() {
@@ -14,9 +16,14 @@ Scene::~Scene() {
     for(it = objects->begin(); it != objects->end(); ++it) 
         delete *it;
     delete objects;
+    delete lights;
+    delete camera;
 }
 
 void Scene::AddObject(Object* object) {
+    if(object->Emit()) {
+        lights->push_back(object);
+    }
     objects->push_back(object);
 }
 
@@ -32,6 +39,12 @@ bool Scene::Intersect(const Ray& ray, Intersection *isect, Object *caller) const
     return hit;
 }
 
-const Camera& Scene::SceneCamera() const {
-    return camera;
+vector<const Object*> Scene::Lights() const {
+    vector<const Object*> lghts(lights->cbegin(), lights->cend());
+    return lghts;
+}
+
+vector<const Object*> Scene::Objects() const {
+    vector<const Object*> objs(objects->cbegin(), objects->cend());
+    return objs;
 }

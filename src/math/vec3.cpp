@@ -117,6 +117,13 @@ Vec3 Vec3::Abs(Vec3 v) {
     return v;
 }
 
+Vec3 Vec3::VClamp(Vec3 v, float low, float high) {
+    v.x = Clamp(v.x, low, high);
+    v.y = Clamp(v.y, low, high);
+    v.z = Clamp(v.z, low, high);
+    return v;
+}
+
 float Vec3::Dot(const Vec3& v) const {
     return x*v.x + y*v.y + z*v.z;
 }

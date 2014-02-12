@@ -24,7 +24,7 @@ Vec3 Sphere::Normal(Vec3 p) const {
     return (p - position).Normalize();
 }
 
-ostream& Sphere::Description(ostream& o) const {
-    o << "Sphere";
-    return o;
+string Sphere::Description() const {
+    string s = "Sphere";
+    return s;
 }

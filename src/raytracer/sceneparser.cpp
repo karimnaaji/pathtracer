@@ -11,7 +11,7 @@ Scene* SceneParser::BuildScene() const {
     Scene *scene = new Scene();
     string line;
 
-    cout << "Parsing scene " << filename << ".." << endl;
+    cout << "Parsing scene " << filename << endl;
 
     if(file.is_open()) {
         while (file.good()) {
@@ -28,6 +28,9 @@ Scene* SceneParser::BuildScene() const {
         } 
     }
 
+    cout << "Loaded scene with " << scene->Objects().size() << " objects ";
+    cout << "and " << scene->Lights().size() << " lights" << endl;
+
     file.close();
 
     return scene;
@@ -36,16 +39,20 @@ Scene* SceneParser::BuildScene() const {
 void SceneParser::LoadCamera(Scene* scene, const char* line) const {
     Vec3 la;
     Vec3 p;
+    Vec2 res;
 
-    int r = sscanf(line, "camera p(%f, %f, %f) la(%f, %f, %f)\n", 
-            &p.x, &p.y, &p.z, &la.x, &la.y, &la.z);
-    if(r < 6) {
+    int r = sscanf(line, "camera p(%f, %f, %f) la(%f, %f, %f) res(%f, %f)\n", 
+            &p.x, &p.y, &p.z, &la.x, &la.y, &la.z, &res.x, &res.y);
+    if(r < 8) {
         cerr << "Error while parsing camera" << endl;
         return;
     }
 
-    Camera cam = Camera(p);
-    cam.LookAt(la);
+    res.x = (int) res.x;
+    res.y = (int) res.y;
+
+    Camera *cam = new Camera(p, res);
+    cam->LookAt(la);
     scene->SetCamera(cam);
 }
 

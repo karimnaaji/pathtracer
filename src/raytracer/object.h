@@ -4,18 +4,21 @@
 #include "ray.h"
 #include "intersection.h"
 #include "material.h"
-#include "raytracer.h"
-#include "matrix4.h"
 #include "color.h"
+#include "config.h"
 
 class Object {
     public:
         Object(Vec3 pos, Color col, Color emis) :
-            position(pos), color(col), emission(emis) { }
+            position(pos), color(col), emission(emis) {}
         virtual bool Intersect(const Ray &ray, Intersection *isect) = 0;
-        virtual ~Object() { }
-        virtual ostream& Description(ostream& o) const = 0;
+        virtual ~Object() {}
+        virtual string Description() const = 0;
         Vec3 virtual Normal(Vec3 p) const = 0;
+
+        bool Emit() const { 
+            return emission.r > 0 || emission.g > 0 || emission.b > 0;
+        }
 
         Ray ApplyTransform(const Ray &ray) const {
             Ray rt(ray);
@@ -42,7 +45,7 @@ class Object {
         }
 
 		inline friend ostream& operator<<(ostream& o, const Object& obj) {
-            o << obj.Description(o) << endl;
+            o << obj.Description() << endl;
             o << "Position: " << obj.position << endl;
             o << "Color: " << obj.color << endl;
             o << "Material: ";

@@ -16,7 +16,7 @@ Vec3 Plane::Normal(Vec3 p) const {
     return Vec3(0.0, 1.0, 0.0);
 }
 
-ostream& Plane::Description(ostream& o) const {
-    o << "Plane";
-    return o;
+string Plane::Description() const {
+    string s = "Plane";
+    return s;
 }

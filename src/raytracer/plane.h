@@ -5,10 +5,10 @@
 
 class Plane : public Object {
     public:
-        Plane(Vec3 p, Vec3 col, Vec3 emis) : Object(p, col, emis) { }
-        ~Plane() { }
+        Plane(Vec3 p, Vec3 col, Vec3 emis) : Object(p, col, emis) {}
+        ~Plane() {}
         bool Intersect(const Ray &ray, Intersection *isect);
-        ostream& Description(ostream& o) const;
+        string Description() const;
         Vec3 Normal(Vec3 p) const;
 };
 

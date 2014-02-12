@@ -1,13 +1,14 @@
 #ifndef __CAMERA_H__
 #define __CAMERA_H__
 
-#include "raytracer.h"
 #include "ray.h"
+#include "config.h"
 
 class Camera {
     public:
         Camera() {}
-        Camera(Vec3 &pos) : cp(pos) { }
+        Camera(Vec3 &pos, Vec2 &resolution);
+        ~Camera();
         void LookAt(const Vec3 &p);
 
         Vec3 GetRight() const { return cr; }
@@ -16,12 +17,14 @@ class Camera {
         Vec3 GetPos() const { return cp; }
 
         Ray PrimaryRay(const Vec2& sp) const;
+        PPMImage* Film() const { return film; }
 
     private:
         Vec3 cp;
         Vec3 cd;
         Vec3 cr;
         Vec3 cu;
+        PPMImage *film;
 };
 
 #endif

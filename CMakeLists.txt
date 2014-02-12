@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(raytracer)
 
-set(CMAKE_CXX_FLAGS "-g -Wall -g -O0 -fms-extensions")
+set(CMAKE_CXX_FLAGS "-g -std=c++11 -stdlib=libc++ -Wall -g -O0 -fms-extensions")
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 file(GLOB_RECURSE HEADERS "src/*.h")

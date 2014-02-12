@@ -1,23 +1,31 @@
 #include <iostream>
+#include "config.h"
 #include "renderer.h"
-#include "scene.h"
 #include "sceneparser.h"
-
-using namespace std;
+#include "scene.h"
 
 int main(int argc, char** argv) {
-    string scenefile(argv[1]);
-    SceneParser parser(scenefile);
+    if(argc < 2) {
+        cerr << "Abort: Must specify scene file" << endl;
+        return -1;
+    }
 
-    Scene* scene = parser.BuildScene();
-    Renderer* renderer = new Renderer();
+    string scenefile(argv[1]);
+
+    SceneParser parser(scenefile);
+    Scene *scene = parser.BuildScene();
+    PPMImage *film = scene->GetCamera()->Film();
+    Renderer renderer(atoi(argv[2]));
+    renderer.Init(*film);
 
     const clock_t begin = clock();
-    renderer->Render(scene, Vec2(1280, 720));
+    renderer.Render(scene);
     cout << "Time: " << (double)(clock() - begin) / CLOCKS_PER_SEC << "s." << endl;
 
+    NetPBMLoader loader;
+    loader.SavePPM(*film, "image");
+
     delete scene;
-    delete renderer;
 
     return 0;
 }

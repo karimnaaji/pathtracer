@@ -1,8 +1,7 @@
 #ifndef __RAY_H__
 #define __RAY_H__
 
-#include "raytracer.h"
-#include <iostream>
+#include "config.h"
 
 class Ray {
     public:

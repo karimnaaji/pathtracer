@@ -1,14 +1,13 @@
 #ifndef __SCENE_PARSER_H__
 #define __SCENE_PARSER_H__
 
-
-#include <iostream>
 #include <fstream>
 #include <sstream>
-#include <string>
-#include "object.h"
 #include "scene.h"
-#include "raytracer.h"
+#include "object.h"
+#include "sphere.h"
+#include "plane.h"
+#include "config.h"
 
 class SceneParser {
     public:

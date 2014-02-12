@@ -1,7 +1,7 @@
 #ifndef __COLOR_H__
 #define __COLOR_H__
 
-#include "raytracer.h"
+#include "config.h"
 typedef Vec3 Color;
 
 #endif
