@@ -5,8 +5,8 @@
 #include "scene.h"
 
 int main(int argc, char** argv) {
-    if(argc < 2) {
-        cerr << "Abort: Must specify scene file" << endl;
+    if(argc < 3) {
+        cerr << "Abort: Must specify scene file and sppxl" << endl;
         return -1;
     }
 

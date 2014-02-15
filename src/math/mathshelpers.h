@@ -15,6 +15,8 @@
 #define INFINITY FLT_MAX
 #endif
 
+#define EPSILON     1e-5f
+
 inline float Radians(float deg) {
     return ((float)M_PI/180.f) * deg;
 }

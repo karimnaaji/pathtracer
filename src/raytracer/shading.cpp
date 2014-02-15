@@ -27,19 +27,35 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
 
     if(!scene->Intersect(ray, &isect, caller)) {
         // background color
-        return Vec3::Zero();
+        return Vec3(0.1); //Vec3::Zero();
     } 
 
     Object *obj = isect.obj;
     Color c = obj->color; 
 
-    if(depth > 5) {
+    if(depth > 20) {
         return obj->emission;
     }
 
     switch(obj->material) {
         case E_DIFFUSE: 
             {
+                float rdx, rdy, rdz;
+                float magnitude;
+                
+                do {
+                    rdx = 2.0 * rand_0_1() - 1.0;
+                    rdy = 2.0 * rand_0_1() - 1.0;
+                    rdz = 2.0 * rand_0_1() - 1.0;
+                    magnitude = sqrt(rdx*rdx + rdy*rdy + rdz*rdz);
+                } while(magnitude > 1.0);
+                
+                Vec3 d = Vec3(rdx / magnitude, rdy / magnitude, rdz / magnitude);
+                if(d.Dot(isect.n) < 0.0) {
+                    d = -d;
+                }
+                Ray r(isect.p, d);
+                return obj->emission + c * 0.99 * Ri(scene, r, depth + 1, pixelPos, obj);
             }
             break;
         case E_SPECULAR:
@@ -52,7 +68,7 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
             break;
         case E_REFRACT:
             {
-                Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
+                //Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
 
             }
             break;

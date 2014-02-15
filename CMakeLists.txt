@@ -1,7 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(raytracer)
 
-set(CMAKE_CXX_FLAGS "-g -std=c++11 -stdlib=libc++ -Wall -g -O0 -fms-extensions")
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    set(CMAKE_CXX_FLAGS "-g -std=c++11 -stdlib=libc++ -Wall -g -O0 -fms-extensions")
+endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") 
+
+if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    set(CMAKE_CXX_FLAGS "-g -std=c++0x -pthread -Wall -g -O0 -fms-extensions")
+endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 file(GLOB_RECURSE HEADERS "src/*.h")

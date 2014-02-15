@@ -20,7 +20,7 @@ class RenderingTask {
         RenderingTask(Bucket* bckt, int samplesppx, Vec2 imgSize, int identitifier, mutex* mutx) 
             : bucket(bckt), sppxl(samplesppx), size(imgSize), id(identitifier), mtx(mutx) {}
         ~RenderingTask();
-        void Start(Scene* scene, float *progress);
+        void Start(Scene* scene, int *progress);
 
     private:
         Bucket *bucket;

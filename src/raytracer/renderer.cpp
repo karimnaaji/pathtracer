@@ -39,7 +39,9 @@ Renderer::~Renderer() {
 
 void Renderer::Render(Scene *scene) {
     thread *threads = new thread[tasks->size()];
-    float *progress = new float;
+    int *progress = new int();
+
+    *progress = 0;
 
     for(unsigned int i = 0; i < tasks->size(); ++i) {
         RenderingTask *task = (*tasks)[i];
