@@ -10,7 +10,7 @@ class Triangle : public Object {
         ~Triangle() {}
         bool Intersect(const Ray &ray, Intersection *isect);
         string Description() const;
-        Vec3 Normal(Vec3 p) const;
+        Vec3 Normal(Vec3 p, Vec3 dir) const;
 
     private:
         Vec3 p1, p2, p3;

@@ -14,35 +14,23 @@ class Object {
         virtual bool Intersect(const Ray &ray, Intersection *isect) = 0;
         virtual ~Object() {}
         virtual string Description() const = 0;
-        Vec3 virtual Normal(Vec3 p) const = 0;
+        Vec3 virtual Normal(Vec3 p, Vec3 dir) const = 0;
 
         bool Emit() const { 
             return emission.r > 0 || emission.g > 0 || emission.b > 0;
-        }
-
-        Ray ApplyTransform(const Ray &ray) const {
-            Ray rt(ray);
-            rt.o = transform * ray.o;
-            return rt;
         }
 
         void FillIntersection(Intersection* isect, float t, const Ray& ray) {
             isect->t = t;
             isect->obj = this;
             isect->p = ray(t);
-            isect->n = Normal(isect->p);
+            isect->n = Normal(isect->p, ray.d);
         }
 
         Vec3 position;
         Color color;
         Color emission;
         MaterialType material;
-        Matrix4 transform;
-
-        Matrix4 GetTransform() const {
-            Matrix4 T = Matrix4::CreateTranslation(-position);
-            return T;
-        }
 
 		inline friend ostream& operator<<(ostream& o, const Object& obj) {
             o << obj.Description() << endl;
@@ -56,6 +44,9 @@ class Object {
             }
             return o;
         }
+
+    private:
+        Matrix4 transform;
 };
 
 #endif

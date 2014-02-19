@@ -10,8 +10,8 @@
 
 using namespace std;
 
-#define BUCKET_WIDTH    40
-#define BUCKET_HEIGHT   45
+#define BUCKET_WIDTH    32
+#define BUCKET_HEIGHT   28
 #define AA_MAX_DEPTH    2
 
 #endif

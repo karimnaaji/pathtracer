@@ -9,7 +9,7 @@ class Plane : public Object {
         ~Plane() {}
         bool Intersect(const Ray &ray, Intersection *isect);
         string Description() const;
-        Vec3 Normal(Vec3 p) const;
+        Vec3 Normal(Vec3 p, Vec3 dir) const;
 };
 
 #endif

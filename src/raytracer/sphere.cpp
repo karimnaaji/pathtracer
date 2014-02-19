@@ -1,9 +1,8 @@
 #include "sphere.h"
 
 bool Sphere::Intersect(const Ray &ray, Intersection *isect) {
-    Ray rt = ApplyTransform(ray);
-    Vec3 oc = rt.o - position;
-    float b = 2.0 * oc.Dot(rt.d);
+    Vec3 oc = ray.o - position;
+    float b = 2.0 * oc.Dot(ray.d);
     float c = oc.Dot(oc) - 1.0;
     float delta = b*b - 4.0*c;
 
@@ -20,7 +19,7 @@ bool Sphere::Intersect(const Ray &ray, Intersection *isect) {
     return false;
 }
 
-Vec3 Sphere::Normal(Vec3 p) const {
+Vec3 Sphere::Normal(Vec3 p, Vec3 dir) const {
     return (p - position).Normalize();
 }
 
