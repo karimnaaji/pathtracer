@@ -55,7 +55,7 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
                     d = -d;
                 }
                 Ray r(isect.p, d);
-                return obj->emission + c * 0.99 * Ri(scene, r, depth + 1, pixelPos, obj);
+                return obj->emission + c * Ri(scene, r, depth + 1, pixelPos, obj);
             }
             break;
         case E_SPECULAR:
@@ -63,16 +63,14 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
                 Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
                 d.Normalize();
                 Ray r = Ray(isect.p, d);
-                return obj->emission + c * 0.99 * Ri(scene, r, depth + 1, pixelPos, obj);
+                return obj->emission + c * Ri(scene, r, depth + 1, pixelPos, obj);
             }
             break;
         case E_REFRACT:
             {
-                //Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
-
             }
             break;
     }
 
-    return obj->emission + c * Clamp(isect.n.y, 0.2, 1.0);
+    return obj->emission + c;
 }

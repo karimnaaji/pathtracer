@@ -24,6 +24,8 @@ Scene* SceneParser::BuildScene() const {
                 LoadCamera(scene, line.c_str());
             } else if(token == 'o') {
                 LoadObject(scene, line.c_str());
+            } else if(token == 'm') {
+                LoadMesh(scene, line.c_str());
             }
         } 
     }
@@ -56,6 +58,33 @@ void SceneParser::LoadCamera(Scene* scene, const char* line) const {
     scene->SetCamera(cam);
 }
 
+void SceneParser::LoadMesh(Scene* scene, const char* line) const {
+    Color c;
+    Color e;
+    Vec3 p;
+    char m;
+    char objfile[255];
+
+    int r = sscanf(line, "mesh:%s p(%f, %f, %f) e(%f, %f, %f) c(%f, %f, %f) material:%c\n", 
+            objfile, &p.x, &p.y, &p.z, &e.r, &e.g, &e.b, &c.r, &c.g, &c.b, &m);
+
+    if(r < 11) {
+        cerr << "Error while parsing object at line:" << endl;
+        cerr << line << endl;
+        return;
+    }
+
+    MaterialType material = MaterialByChar(m);
+
+    if(material == -1) {
+        cerr << "Unrecognized material at line:" << endl;
+        cerr << line << endl;
+        return;
+    }
+
+    objparser.Parse(string(objfile), scene, p, c, e, material);
+}
+
 void SceneParser::LoadObject(Scene* scene, const char* line) const {
     Color c;
     Color e;
@@ -83,15 +112,14 @@ void SceneParser::LoadObject(Scene* scene, const char* line) const {
             return;
     }
 
-    switch(m) {
-        case 'd': obj->material = E_DIFFUSE; break;
-        case 's': obj->material = E_SPECULAR; break;
-        case 'r': obj->material = E_REFRACT; break;
-        default:
-            cerr << "Unrecognized material at line:" << endl;
-            cerr << line << endl;
-            return;
+    MaterialType material = MaterialByChar(m);
+
+    if(material == -1) {
+        cerr << "Unrecognized material at line:" << endl;
+        cerr << line << endl;
+        return;
     }
 
+    obj->material = material;
     scene->AddObject(obj);
 }

@@ -14,6 +14,7 @@ int main(int argc, char** argv) {
 
     SceneParser parser(scenefile);
     Scene *scene = parser.BuildScene();
+
     PPMImage *film = scene->GetCamera()->Film();
     Renderer renderer(atoi(argv[2]));
     renderer.Init(*film);

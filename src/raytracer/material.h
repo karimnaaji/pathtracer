@@ -7,4 +7,13 @@ enum MaterialType {
     E_REFRACT 
 };
 
+inline MaterialType MaterialByChar(char material) {
+    switch(material) {
+        case 'd': return E_DIFFUSE; 
+        case 's': return E_SPECULAR;
+        case 'r': return E_REFRACT;
+        default: return (MaterialType) -1;
+    }   
+}
+
 #endif

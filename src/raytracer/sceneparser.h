@@ -3,9 +3,12 @@
 
 #include <fstream>
 #include <sstream>
+
+#include "objparser.h"
 #include "scene.h"
 #include "object.h"
 #include "sphere.h"
+#include "triangle.h"
 #include "plane.h"
 #include "config.h"
 
@@ -18,7 +21,10 @@ class SceneParser {
     private:
         void LoadCamera(Scene* scene, const char* line) const;
         void LoadObject(Scene* scene, const char* line) const;
+        void LoadMesh(Scene* scene, const char* line) const;
         string filename;
+
+        ObjParser objparser;
 };
 
 #endif
