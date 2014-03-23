@@ -102,6 +102,12 @@ Vec3 Vec3::operator/(const float a) const {
     return t;
 }
 
+float Vec3::operator[](const int dim) const {
+    if(dim == 0) return x;
+    else if(dim == 1) return y;
+    else return z;
+}
+
 Vec3 Vec3::Cross(const Vec3& v) const {
     Vec3 t;
     t.x = y*v.z - z*v.y;

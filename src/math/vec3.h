@@ -32,6 +32,7 @@ class Vec3 {
         Vec3 operator*(const Vec3& v) const;
         Vec3& operator/=(const float a);
         Vec3 operator/(const float a)const;
+        float operator[](const int dim) const;
         friend Vec3 operator*(const float a, const Vec3& v);
 
         static Vec3 Zero();

@@ -18,6 +18,8 @@ cmake_install.cmake
 *.swo
 *.log
 
+build/images/
+
 #os file
 .DS_Store
 .DS_Store?

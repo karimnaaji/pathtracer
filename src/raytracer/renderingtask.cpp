@@ -23,6 +23,9 @@ void RenderingTask::Start(Scene* scene, int *progress) {
             for(int s = 0; s < sppxl; ++s) 
                 c += AverageColor(scene, xval, yval, pxw, pxh, 0, sppxl);
             c = (c / (float) sppxl); 
+            // gamma correction
+            float gamma = 1.5;
+            c = Vec3(pow(c.r, 1.0 / gamma), pow(c.g, 1.0 / gamma), pow(c.b, 1.0 / gamma));
 
             (*film)(x, y) = Color::VClamp(c, 0.0, 1.0) * 255.0;
             *progress = *progress + 1;

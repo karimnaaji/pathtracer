@@ -27,3 +27,7 @@ string Sphere::Description() const {
     string s = "Sphere";
     return s;
 }
+
+BBox Sphere::Bounds() const {
+    return BBox();
+}

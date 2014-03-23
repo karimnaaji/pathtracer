@@ -10,6 +10,7 @@ class Sphere : public Object {
         bool Intersect(const Ray &ray, Intersection *isect);
         string Description() const;
         Vec3 Normal(Vec3 p, Vec3 dir) const;
+        BBox Bounds() const;
 };
 
 #endif

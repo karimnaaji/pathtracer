@@ -35,4 +35,18 @@ inline float Clamp(float val, float low, float high) {
     else return val;
 }
 
+inline float Max(float a, float b) {
+    return a > b ? a : b;
+}
+
+inline float Min(float a, float b) {
+    return a > b ? b : a;
+}
+
+inline void Swap(float& a, float& b) {
+    float tmp = a;
+    a = b;
+    b = tmp;
+}
+
 #endif

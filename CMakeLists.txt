@@ -20,5 +20,5 @@ endforeach()
 list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 include_directories(${INCLUDE_DIRS})
+
 add_executable(raytracer.out ${SOURCES})
-target_link_libraries(raytracer.out)

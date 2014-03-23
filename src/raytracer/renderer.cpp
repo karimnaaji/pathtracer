@@ -8,8 +8,8 @@ Renderer::Renderer(int samples) : sppxl(samples) {
 void Renderer::Init(const PPMImage &film) {
     int width = film.GetWidth();
     int height = film.GetHeight();
-    int bwidth = BUCKET_WIDTH;
-    int bheight = BUCKET_HEIGHT;
+    int bwidth = film.GetWidth() / 18;
+    int bheight = film.GetHeight() / 18;
     int id = 0;
 
     for(int x = 0; x < width; x += bwidth) {

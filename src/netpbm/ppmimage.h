@@ -20,6 +20,7 @@ class PPMImage {
         int GetWidth() const;
         int GetGrayscale() const;
         int GetSize() const;
+        float* Data() const;
     private:
         int height;
         int width;

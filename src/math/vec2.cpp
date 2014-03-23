@@ -100,3 +100,8 @@ Vec2& Vec2::normalize() {
     (*this) /= length();
     return (*this);
 }
+
+float Vec2::operator[](const int dim) const {
+    if(dim == 0) return x;
+    else return y;
+}

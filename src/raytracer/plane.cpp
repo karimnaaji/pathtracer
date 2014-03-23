@@ -23,3 +23,7 @@ string Plane::Description() const {
     string s = "Plane";
     return s;
 }
+
+BBox Plane::Bounds() const {
+    return BBox();
+}

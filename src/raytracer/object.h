@@ -6,6 +6,7 @@
 #include "material.h"
 #include "color.h"
 #include "config.h"
+#include "bbox.h"
 
 class Object {
     public:
@@ -15,6 +16,7 @@ class Object {
         virtual ~Object() {}
         virtual string Description() const = 0;
         Vec3 virtual Normal(Vec3 p, Vec3 dir) const = 0;
+        BBox virtual Bounds() const = 0;
 
         bool Emit() const { 
             return emission.r > 0 || emission.g > 0 || emission.b > 0;

@@ -44,3 +44,7 @@ string Triangle::Description() const {
     string s = "Triangle";
     return s;
 }
+
+BBox Triangle::Bounds() const {
+    return BBox();
+}

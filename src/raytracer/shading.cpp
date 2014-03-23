@@ -27,13 +27,13 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
 
     if(!scene->Intersect(ray, &isect, caller)) {
         // background color
-        return Vec3(0.1); //Vec3::Zero();
+        return Vec3::Zero();
     } 
 
     Object *obj = isect.obj;
     Color c = obj->color; 
 
-    if(depth > 20) {
+    if(depth > 5) {
         return obj->emission;
     }
 
@@ -68,6 +68,40 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
             break;
         case E_REFRACT:
             {
+                Vec3 r = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
+                r.Normalize();
+                Ray reflectRay = Ray(isect.p, r);
+
+                bool in = ray.d.Dot(isect.n) < 0;
+                float etat = 1.0;
+                float etai = 1.33;
+
+                if(in) {
+                    Swap(etat, etai);
+                }
+
+                float eta = etai / etat;
+                float cosi = isect.n.Dot(ray.d);
+                float cost;
+                float cos2i = cosi * cosi;
+                float sint = (eta * eta) * (1 - cos2i);
+
+                // total internal reflection
+                if(sint >= 1) {
+                    return obj->emission + c * Ri(scene, reflectRay, depth + 1, pixelPos, obj);
+                }
+    
+                Vec3 t = eta * ray.d + (eta * cosi - sqrt(1 - sint)) * isect.n;
+                t.Normalize();
+                Ray refractRay = Ray(isect.p, t);
+                cost = sqrt(1 - sint * sint);
+
+                float Rparl = ((etat * cosi) - (etai * cost)) / ((etat * cosi) + (etai * cost));
+                float Rperp = ((etai * cosi) - (etat * cost)) / ((etai * cosi) + (etat * cost));
+                float fresnel = (Rperp * Rperp + Rparl * Rparl) / 2.0;
+
+                //cout << fresnel << endl;
+                return obj->emission + c * Ri(scene, refractRay, depth + 1, pixelPos, obj);
             }
             break;
     }

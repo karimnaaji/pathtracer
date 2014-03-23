@@ -8,8 +8,10 @@ using std::ostream;
 
 class Vec2 {
     public:
-        float x;
-        float y;
+        union {
+            struct { float x, y; };
+            float v[2];
+        };
         
         Vec2();
         Vec2(float x, float y);
@@ -27,6 +29,7 @@ class Vec2 {
         Vec2 operator*(const float a)const;
         Vec2& operator/=(const float a);
         Vec2 operator/(const float a)const;
+        float operator[](const int dim) const;
         friend Vec2 operator*(const float a,const Vec2 & v);
 
         float length()const;

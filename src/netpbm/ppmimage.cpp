@@ -86,3 +86,7 @@ int PPMImage::GetWidth() const {
 int PPMImage::GetSize() const {
     return width*height;
 }
+
+float* PPMImage::Data() const {
+    return reinterpret_cast<float*>(data);
+}

@@ -44,7 +44,7 @@ vector<const Object*> Scene::Lights() const {
     return lghts;
 }
 
-vector<const Object*> Scene::Objects() const {
-    vector<const Object*> objs(objects->cbegin(), objects->cend());
+vector<Object*> Scene::Objects() const {
+    vector<Object*> objs(objects->begin(), objects->end());
     return objs;
 }
