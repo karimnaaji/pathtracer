@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(raytracer)
+project(pathtracer)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(CMAKE_CXX_FLAGS "-g -std=c++11 -stdlib=libc++ -Wall -g -O0 -fms-extensions")
@@ -21,4 +21,4 @@ list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 include_directories(${INCLUDE_DIRS})
 
-add_executable(raytracer.out ${SOURCES})
+add_executable(pathtracer.out ${SOURCES})
