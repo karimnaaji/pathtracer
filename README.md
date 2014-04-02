@@ -3,10 +3,31 @@ pathtracer
 
 version 0.9.1
 
-usage
------
+dependencies
+------------
 
-This project uses cmake, to build and run it you can either do:
+This project uses cmake.
+
+#### mac osx
+
+Download and install [CMake](http://www.cmake.org/cmake/resources/software.html)
+if you don't already have it. 
+To simplify installation you may use [Homebrew](http://brew.sh):
+
+```bash
+brew install cmake
+```
+
+#### linux (ubuntu)
+
+```bash
+sudo apt-get install cmake
+```
+
+build and run
+-------------
+
+To build and run it you can either do:
 
 ```bash
 $ cd build
@@ -22,8 +43,10 @@ $ ./pathtracer.out scenes/scene_file_name samples_per_pixel
 ```
 which will only output an image.ppm file.
 
-scenes 
-------
+usage
+-----
+
+#### scenes 
 
 To define a camera, **p** is the position, **la** is the _look at_ position, and **res** defines the resolution of the film of the camera:
 
@@ -43,7 +66,7 @@ For meshes, you first have to define its _.obj_ file location, and the last para
 mesh:obj/plane1.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(1.0, 1.0, 1.0) material:s|d|r
 ```
 
-### example
+#### example
 
 ```bash
 # cornell box scene
@@ -63,10 +86,9 @@ object:p p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(0.88, 0.85, 0.78) material:d
 mesh:obj/plane1.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(1.0, 1.0, 1.0) material:d
 mesh:obj/plane2.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(0.41, 0.21, 0.35) material:d
 mesh:obj/plane3.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(0.81, 0.29, 0.0) material:d
-````
+```
 
-results
--------
+#### results
 
 ![example](http://karim.naaji.fr/images/path_tracing3.png)
 
