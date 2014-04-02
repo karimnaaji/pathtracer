@@ -18,7 +18,7 @@ which will give you more information about the time it took to render the image,
 ```bash
 $ cd build
 $ cmake .. && make
-$ ./pathtracer scenes/scenefile_name samples_per_pixel
+$ ./pathtracer.out scenes/scene_file_name samples_per_pixel
 ```
 which will only output an image.ppm file.
 
