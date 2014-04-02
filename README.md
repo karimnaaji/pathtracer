@@ -8,7 +8,7 @@ dependencies
 
 This project uses cmake.
 
-#### Mac OS X
+#### mac osx
 
 Download and install [CMake](http://www.cmake.org/cmake/resources/software.html)
 if you don't already have it. 
@@ -18,7 +18,7 @@ To simplify installation you may use [Homebrew](http://brew.sh):
 brew install cmake
 ```
 
-#### Linux (Ubuntu)
+#### linux (ubuntu)
 
 ```bash
 sudo apt-get install cmake
@@ -88,7 +88,7 @@ mesh:obj/plane2.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(0.41, 0.21, 0.35) materi
 mesh:obj/plane3.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(0.81, 0.29, 0.0) material:d
 ```
 
-### results
+#### results
 
 ![example](http://karim.naaji.fr/images/path_tracing3.png)
 
