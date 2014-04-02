@@ -8,12 +8,19 @@ cmake .. && make
 if [[ $? == 0 ]] 
 then
     d1=$(date +"%s")
+
     ./pathtracer.out scenes/$1 $2
-    d2=$(date +"%s")
     
+    if [[ $? != 0 ]] 
+    then
+        echo -e "$(tput setaf 1)Bash: An error occured while running ./pathtracer"
+        exit $?
+    fi
+
+    d2=$(date +"%s")
     d=$(($d2-$d1))
     
-    echo "$(($d/60)) minutes and $(($d%60)) seconds elapsed."
+    echo -e "$(tput bold)Bash: $(($d/60)) minutes and $(($d%60)) seconds elapsed."
 
     now=`date +"%d%b%Y-%s"`
     scene=`echo $1 | cut -d'.' -f1`
@@ -22,12 +29,13 @@ then
     mkdir -p images
     convert image.ppm $filename
 
-    echo "filename: $filename"
+    echo -e "$(tput bold)Bash: Image saved as $filename"
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         xdg-open $filename
     elif [[ "$OSTYPE" == "darwin12" ]]; then
         open $filename
     fi
     
-    rm -v image.ppm
+    echo -e "$(tput bold)Bash: Remove of output file image.ppm"
+    rm image.ppm
 fi
