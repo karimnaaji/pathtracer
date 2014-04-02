@@ -96,11 +96,6 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
                 Ray refractRay = Ray(isect.p, t);
                 cost = sqrt(1 - sint * sint);
 
-                float Rparl = ((etat * cosi) - (etai * cost)) / ((etat * cosi) + (etai * cost));
-                float Rperp = ((etai * cosi) - (etat * cost)) / ((etai * cosi) + (etat * cost));
-                float fresnel = (Rperp * Rperp + Rparl * Rparl) / 2.0;
-
-                //cout << fresnel << endl;
                 return obj->emission + c * Ri(scene, refractRay, depth + 1, pixelPos, obj);
             }
             break;

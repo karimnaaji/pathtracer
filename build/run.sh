@@ -1,6 +1,8 @@
 #!/bin/bash
-# must be ran into osx/ or linux/ folder inside build/
-cmake ../..
+# ./run.sh scene_name samples_per_pixel
+# compile, build and run the path tracer
+# stores the output inside images/
+cmake ..
 make
 if [[ $? == 0 ]] 
 then
@@ -12,7 +14,8 @@ then
 
     now=`date +"%d%b%Y-%s"`
     scene=`echo $1 | cut -d'.' -f1`
-    filename="../images/$scene-$now-$2sppx.png"
+    filename="images/$scene-$now-$2sppx.png"
+    mkdir -p images
     convert image.ppm $filename
 
     echo "filename: $filename"
