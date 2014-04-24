@@ -30,7 +30,7 @@ Scene* SceneParser::BuildScene() const {
         } 
     }
 
-    cout << "Loaded scene with " << scene->Objects().size() << " objects ";
+    cout << "Loaded scene with " << scene->ObjectsCount() << " objects ";
     cout << "and " << scene->Lights().size() << " lights" << endl;
 
     file.close();

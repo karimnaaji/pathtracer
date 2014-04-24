@@ -16,7 +16,7 @@ class Scene {
         void SetCamera(Camera *cam) { camera = cam; }
         Camera* GetCamera() const { return camera; }
         vector<const Object*> Lights() const;
-        vector<Object*> Objects() const;
+        unsigned int ObjectsCount() const;
 
     private:
         Camera *camera;

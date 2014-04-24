@@ -39,12 +39,11 @@ bool Scene::Intersect(const Ray& ray, Intersection *isect, Object *caller) const
     return hit;
 }
 
+unsigned int Scene::ObjectsCount() const {
+    return objects->size();
+}
+
 vector<const Object*> Scene::Lights() const {
     vector<const Object*> lghts(lights->cbegin(), lights->cend());
     return lghts;
-}
-
-vector<Object*> Scene::Objects() const {
-    vector<Object*> objs(objects->begin(), objects->end());
-    return objs;
 }
