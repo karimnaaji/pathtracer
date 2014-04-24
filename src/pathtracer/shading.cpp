@@ -96,9 +96,7 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
                 Ray refractRay = Ray(isect.p, t);
                 cost = sqrt(1 - sint * sint);
 
-                return rand_0_1() > 0.5 ? 
-                    obj->emission + c * Ri(scene, refractRay, depth + 1, pixelPos, obj):
-                    obj->emission + c * Ri(scene, reflectRay, depth + 1, pixelPos, obj) * (cost*cost*cost*cost);
+                return obj->emission + c * Ri(scene, refractRay, depth + 1, pixelPos, obj);
             }
             break;
     }
