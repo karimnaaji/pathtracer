@@ -8,7 +8,23 @@ Color AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int aad
             x += rand_0_1() * pxw - pxw / 2.0;   
             y += rand_0_1() * pxh - pxh / 2.0;
         }
-        return Ri(scene, cam->PrimaryRay(Vec2(x, y)), 0, Vec2(x, y));
+
+        Ray ray = cam->PrimaryRay(Vec2(x,y));
+        float lensRadius = 0.4f;
+        float focalDistance = 1.5f;
+
+        if(lensRadius > 0.) {
+            Intersection isect;
+            float lensU = rand_0_1() * lensRadius;
+            float lensV = rand_0_1() * lensRadius;
+            scene->Intersect(ray, &isect, NULL);
+            float ft = abs(focalDistance / isect.p.z);
+            Vec3 focus = ray(ft);
+            ray.o = Vec3(ray.o.x + lensU, ray.o.y + lensV, ray.o.z);
+            ray.d = (ray.d + focus - ray.o).Normalize();
+        }
+
+        return Ri(scene, ray, 0, Vec2(x, y));
     }
     
     Color c;
