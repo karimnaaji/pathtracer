@@ -1,7 +1,7 @@
 pathtracer 
 ==========
 
-version 0.9.1
+version 0.9.2
 
 dependencies
 ------------
@@ -48,10 +48,10 @@ usage
 
 #### scenes 
 
-To define a camera, **p** is the position, **la** is the _look at_ position, and **res** defines the resolution of the film of the camera:
+To define a camera, you can provide a lens size (for depth of field) and the focus plane distance, if you don't, the rendering will be without depth of field (pinhole camera). For the other parameters, **p** is the position, **la** is the _look at_ position, and **res** defines the resolution of the film of the camera:
 
 ```
-camera p(0.0, 2.5, -4.0) la(0.0, 2.5, 0.0) res(640, 480)
+camera lens(0.08) focus(1.0) p(0.0, 2.5, -4.0) la(0.0, 2.5, 0.0) res(640, 480)
 ```
 
 To define basic objects (planes & spheres), the object can be either a sphere with **s** or a plane with **p**, next **p** is the position of this object, **e** is its emission, **c** is its color, the material can be **s**, **d** or **r** for respectively _specular_, _diffuse_ or _refractive_ material.
