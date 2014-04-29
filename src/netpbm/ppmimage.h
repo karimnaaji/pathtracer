@@ -5,8 +5,9 @@
 #include <iostream>
 
 #include "vec3.h"
+#include "image.h"
 
-class PPMImage {
+class PPMImage : public Image<Vec3> {
     public:
         PPMImage();
         PPMImage(int width, int height);
@@ -16,14 +17,9 @@ class PPMImage {
     
         Vec3 operator()(int i, int j) const;
         Vec3& operator()(int i, int j);
-        int GetHeight() const;
-        int GetWidth() const;
         int GetGrayscale() const;
-        int GetSize() const;
         float* Data() const;
     private:
-        int height;
-        int width;
         int grayscale;
         Vec3** data;
 };

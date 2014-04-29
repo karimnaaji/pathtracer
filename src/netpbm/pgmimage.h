@@ -2,8 +2,9 @@
 #define __PGM_IMAGE_H__
 
 #include <string>
+#include "image.h"
 
-class PGMImage {
+class PGMImage : public Image<float> {
     public:
         PGMImage();
         PGMImage(int width, int height);
@@ -13,13 +14,9 @@ class PGMImage {
     
         float operator()(int i, int j) const;
         float& operator()(int i, int j);
-        int GetHeight() const;
-        int GetWidth() const;
 
         void Threshold(float threshold, float newValue);
     private:
-        int height;
-        int width;
         float* data;
 };
 

@@ -1,14 +1,10 @@
 #include "ppmimage.h"
 
-PPMImage::PPMImage() :  
-    height(0),
-    width(0) { 
+PPMImage::PPMImage() : Image(0, 0) {
     data = NULL;
 }
 
-PPMImage::PPMImage(int width_, int height_) : 
-    height(height_), 
-    width(width_) {
+PPMImage::PPMImage(int width_, int height_) : Image(width_, height_) {
     data = new Vec3*[height];
     for(int j = 0; j < height; ++j) {
         data[j] = new Vec3[width];
@@ -73,18 +69,6 @@ Vec3 PPMImage::operator()(int i, int j) const {
 
 Vec3& PPMImage::operator()(int i, int j) {
     return data[j][i];
-}
-
-int PPMImage::GetHeight() const {
-    return height;
-}
-
-int PPMImage::GetWidth() const {
-    return width;
-}
-
-int PPMImage::GetSize() const {
-    return width*height;
 }
 
 float* PPMImage::Data() const {

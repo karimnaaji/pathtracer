@@ -1,14 +1,10 @@
 #include "pgmimage.h"
 
-PGMImage::PGMImage() : 
-    height(0),
-    width(0) { 
+PGMImage::PGMImage() : Image(0, 0) {
     data = NULL;
 }
 
-PGMImage::PGMImage(int width_, int height_) : 
-    height(height_), 
-    width(width_) {
+PGMImage::PGMImage(int width_, int height_) : Image(width_, height_) {
     data = new float[height*width];
 
     for(int i = 0; i < width; ++i) {
@@ -60,14 +56,6 @@ float PGMImage::operator()(int i, int j) const {
 
 float& PGMImage::operator()(int i, int j) {
     return data[j*height+i];
-}
-
-int PGMImage::GetHeight() const {
-    return height;
-}
-
-int PGMImage::GetWidth() const {
-    return width;
 }
 
 void PGMImage::Threshold(float threshold, float newValue) {
