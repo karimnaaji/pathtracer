@@ -14,10 +14,21 @@ Scene* SceneParser::BuildScene() const {
     cout << "Parsing scene " << filename << endl;
 
     if(file.is_open()) {
+        // parse version
+        int major;
+        int minor;
+        int maintenance;
+        getline(file, line);
+        sscanf(line.c_str(), "version %d.%d.%d", &major, &minor, &maintenance);
+
+        if(!CompareVersion(major, minor, maintenance)) {
+            cerr << "Scene version does not match with current path tracer version" << endl;
+            return NULL;
+        }
+
         while (file.good()) {
             getline(file, line);
             char token = line[0];
-
             if(token == '#') {
                 continue;
             } else if(token == 'c') {
@@ -42,9 +53,11 @@ void SceneParser::LoadCamera(Scene* scene, const char* line) const {
     Vec3 la;
     Vec3 p;
     Vec2 res;
+    float lens;
+    float focal;
 
-    int r = sscanf(line, "camera p(%f, %f, %f) la(%f, %f, %f) res(%f, %f)\n", 
-            &p.x, &p.y, &p.z, &la.x, &la.y, &la.z, &res.x, &res.y);
+    int r = sscanf(line, "camera lens(%f) focal(%f) p(%f, %f, %f) la(%f, %f, %f) res(%f, %f)\n", 
+            &lens, &focal, &p.x, &p.y, &p.z, &la.x, &la.y, &la.z, &res.x, &res.y);
     if(r < 8) {
         cerr << "Error while parsing camera" << endl;
         return;
@@ -53,7 +66,7 @@ void SceneParser::LoadCamera(Scene* scene, const char* line) const {
     res.x = (int) res.x;
     res.y = (int) res.y;
 
-    Camera *cam = new Camera(p, res);
+    Camera *cam = new Camera(p, res, lens, focal);
     cam->LookAt(la);
     scene->SetCamera(cam);
 }

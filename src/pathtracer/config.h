@@ -7,6 +7,7 @@
 #include "coremaths.h"
 #include "netpbmloader.h"
 #include "ppmimage.h"
+#include "pathtracer.h"
 
 using namespace std;
 

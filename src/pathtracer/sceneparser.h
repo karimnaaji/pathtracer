@@ -11,6 +11,7 @@
 #include "triangle.h"
 #include "plane.h"
 #include "config.h"
+#include "pathtracer.h"
 
 class SceneParser {
     public:

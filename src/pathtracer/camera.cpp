@@ -1,6 +1,12 @@
 #include "camera.h"
 
-Camera::Camera(Vec3 &pos, Vec2 &resolution) : cp(pos) {
+Camera::Camera() {
+    lensRadius = 0.0f;
+    focalDistance = 0.0f;
+}
+
+Camera::Camera(Vec3 &pos, Vec2 &resolution, float lensRad, float focal) 
+    : cp(pos), lensRadius(lensRad), focalDistance(focal) {
     film = new PPMImage(resolution.x, resolution.y);
 }
 
@@ -14,6 +20,21 @@ void Camera::LookAt(const Vec3 &p) {
     cd = (p - cp).Normalize();
     cr = cd.Cross(up).Normalize();
     cu = cr.Cross(cd).Normalize();
+}
+
+float Camera::getLensRadius() const {
+    return lensRadius;
+}
+
+float Camera::getFocalDistance() const {
+    return focalDistance;
+}
+
+Vec2 Camera::SampleLens() const {
+    Vec2 uv;
+    uv.x = (2.0 * rand_0_1() - 1.0) * lensRadius;
+    uv.y = (2.0 * rand_0_1() - 1.0) * lensRadius;
+    return uv;
 }
 
 Ray Camera::PrimaryRay(const Vec2& sp) const {

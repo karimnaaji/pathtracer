@@ -3,11 +3,12 @@
 
 #include "ray.h"
 #include "config.h"
+#include "helpers.h"
 
 class Camera {
     public:
-        Camera() {}
-        Camera(Vec3 &pos, Vec2 &resolution);
+        Camera();
+        Camera(Vec3 &pos, Vec2 &resolution, float lensRadius, float focalDistance);
         ~Camera();
         void LookAt(const Vec3 &p);
 
@@ -18,6 +19,9 @@ class Camera {
 
         Ray PrimaryRay(const Vec2& sp) const;
         PPMImage* Film() const { return film; }
+        Vec2 SampleLens() const;
+        float getLensRadius() const;
+        float getFocalDistance() const;
 
     private:
         Vec3 cp;
@@ -25,6 +29,8 @@ class Camera {
         Vec3 cr;
         Vec3 cu;
         PPMImage *film;
+        float lensRadius;
+        float focalDistance;
 };
 
 #endif

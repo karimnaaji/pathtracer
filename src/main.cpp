@@ -4,6 +4,7 @@
 #include "renderer.h"
 #include "sceneparser.h"
 #include "scene.h"
+#include "pathtracer.h"
 
 int main(int argc, char** argv) {
     if(argc < 3) {
@@ -12,6 +13,8 @@ int main(int argc, char** argv) {
     }
 
     string scenefile(argv[1]);
+
+    PrintVersion();
 
     SceneParser parser(scenefile);
     Scene *scene = parser.BuildScene();

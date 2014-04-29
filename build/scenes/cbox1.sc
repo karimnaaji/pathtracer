@@ -1,3 +1,4 @@
+version 0.9.2
 # test scene
 camera p(0.0, 2.5, -4.0) la(0.0, 2.5, 0.0) res(640, 480)
 

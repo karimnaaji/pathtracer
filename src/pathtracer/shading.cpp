@@ -10,17 +10,14 @@ Color AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int aad
         }
 
         Ray ray = cam->PrimaryRay(Vec2(x,y));
-        float lensRadius = 0.1f;
-        float focalDistance = 1.5f;
 
-        if(lensRadius > 0.) {
+        if(cam->getLensRadius() > 0.) {
             Intersection isect;
-            float lensU = (2.0 * rand_0_1() - 1.0) * lensRadius;
-            float lensV = (2.0 * rand_0_1() - 1.0) * lensRadius;
+            Vec2 uv = cam->SampleLens();
             scene->Intersect(ray, &isect, NULL);
-            float ft = abs(focalDistance / isect.p.z);
+            float ft = abs(cam->getFocalDistance() / isect.p.z);
             Vec3 focus = ray(ft);
-            ray.o = Vec3(ray.o.x + lensU, ray.o.y + lensV, ray.o.z);
+            ray.o = Vec3(ray.o.x + uv.x, ray.o.y + uv.y, ray.o.z);
             ray.d = (ray.d + focus - ray.o).Normalize();
         }
 
