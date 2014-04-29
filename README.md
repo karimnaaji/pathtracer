@@ -92,6 +92,10 @@ mesh:obj/plane3.obj p(0.0, 0.0, 0.0) e(0.0, 0.0, 0.0) c(0.81, 0.29, 0.0) materia
 
 ![example](http://karim.naaji.fr/images/path_tracing3.png)
 
+First attempts on depth of field (there's still some artifacts):
+
+![example](http://karim.naaji.fr/images/path_tracing4.png)
+
 licence
 ======= 
 
