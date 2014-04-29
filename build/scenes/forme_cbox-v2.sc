@@ -1,5 +1,6 @@
+version 0.9.2
 # test scene
-camera p(0.0, 2.5, -4.0) la(0.0, 2.5, 0.0) res(640, 480)
+camera lens(0.0) focus(0.0) p(0.0, 2.5, -4.0) la(0.0, 2.5, 0.0) res(640, 480)
 
 # spheres
 object:s p(1.0, 3.5, 3.5) e(2.5, 2.5, 2.5) c(1.0, 1.0, 1.0) material:d
