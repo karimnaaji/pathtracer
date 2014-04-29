@@ -58,8 +58,6 @@ void SceneParser::LoadCamera(Scene* scene, const char* line) const {
 
     int r = sscanf(line, "camera lens(%f) focus(%f) p(%f, %f, %f) la(%f, %f, %f) res(%f, %f)\n", 
             &lens, &focal, &p.x, &p.y, &p.z, &la.x, &la.y, &la.z, &res.x, &res.y);
-    cout << lens << endl;
-    cout << focal << endl;
     if(r < 10) {
         cerr << "Error while parsing camera" << endl;
         return;
