@@ -11,6 +11,6 @@
 
 using namespace std;
 
-#define AA_MAX_DEPTH    2
+#define AA_MAX_DEPTH    1
 
 #endif

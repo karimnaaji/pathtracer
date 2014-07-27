@@ -5,6 +5,6 @@
 #include "helpers.h"
 
 Color AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int aadepth, int sppxl);
-Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller = NULL);
+Color Shade(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller = NULL);
 
 #endif

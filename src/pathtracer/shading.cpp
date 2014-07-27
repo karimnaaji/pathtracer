@@ -21,7 +21,7 @@ Color AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int aad
             ray.d = (ray.d + focus - ray.o).Normalize();
         }
 
-        return Ri(scene, ray, 0, Vec2(x, y));
+        return Shade(scene, ray, 0, Vec2(x, y));
     }
     
     Color c;
@@ -34,7 +34,7 @@ Color AverageColor(Scene *scene, float x, float y, float pxw, float pxh, int aad
     return c / 4.0;
 }
 
-Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller) {
+Color Shade(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *caller) {
     Intersection isect;
     isect.spos = pixelPos;
 
@@ -68,7 +68,7 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
                     d = -d;
                 }
                 Ray r(isect.p, d);
-                return obj->emission + c * Ri(scene, r, depth + 1, pixelPos, obj);
+                return obj->emission + c * Shade(scene, r, depth + 1, pixelPos, obj);
             }
             break;
         case E_SPECULAR:
@@ -76,40 +76,33 @@ Color Ri(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Object *
                 Vec3 d = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
                 d.Normalize();
                 Ray r = Ray(isect.p, d);
-                return obj->emission + c * Ri(scene, r, depth + 1, pixelPos, obj);
+                return obj->emission + c * Shade(scene, r, depth + 1, pixelPos, obj);
             }
             break;
         case E_REFRACT:
             {
-                Vec3 r = ray.d - 2.0 * isect.n * isect.n.Dot(ray.d);
-                r.Normalize();
-                Ray reflectRay = Ray(isect.p, r);
+                bool into = ray.d.Dot(isect.n); // entering into the medium?
 
-                bool in = ray.d.Dot(isect.n) < 0;
-                float etat = 1.0;
-                float etai = 1.33;
+                float n1 = 1.0;
+                float n2 = 1.5;
 
-                if(in) {
-                    Swap(etat, etai);
+                float n1n2 = into ? (n1 / n2) : (n2 / n1);
+                float n1n22 = n1n2 * n1n2;
+                Vec3 n = into ? isect.n : -isect.n;
+                Vec3 r = ray.d;
+                float rn = r.Dot(n);
+                float a = 1 - n1n22 * (1 - rn*rn);
+
+                Ray refractRay;
+
+                if(a >= 0) {
+                    Vec3 d = r * n1n2 - n * (n1n2 * rn + sqrt(a));
+                    refractRay = Ray(ray.o, d);
+                } else {
+                    refractRay = ray; // total internal reflection
                 }
 
-                float eta = etai / etat;
-                float cosi = isect.n.Dot(ray.d);
-                float cost;
-                float cos2i = cosi * cosi;
-                float sint = (eta * eta) * (1 - cos2i);
-
-                // total internal reflection
-                if(sint >= 1) {
-                    return obj->emission + c * Ri(scene, reflectRay, depth + 1, pixelPos, obj);
-                }
-    
-                Vec3 t = eta * ray.d + (eta * cosi - sqrt(1 - sint)) * isect.n;
-                t.Normalize();
-                Ray refractRay = Ray(isect.p, t);
-                cost = sqrt(1 - sint * sint);
-
-                return obj->emission + c * Ri(scene, refractRay, depth + 1, pixelPos, obj);
+                return obj->emission + c * Shade(scene, refractRay, depth + 1, pixelPos, obj);
             }
             break;
     }
