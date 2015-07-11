@@ -13,6 +13,7 @@ void RenderingTask::Start(Scene* scene, int *progress) {
 
     float pxw = 1.0 / (float) width;
     float pxh = 1.0 / (float) height;
+    float gamma = 2.2;
 
     for(int x = bucket->minx; x < bucket->maxx; ++x) {
         float xval = x / (float) width;
@@ -24,7 +25,6 @@ void RenderingTask::Start(Scene* scene, int *progress) {
                 c += AverageColor(scene, xval, yval, pxw, pxh, 0, sppxl);
             c = (c / (float) sppxl); 
             // gamma correction
-            float gamma = 1.5;
             c = Vec3(pow(c.r, 1.0 / gamma), pow(c.g, 1.0 / gamma), pow(c.b, 1.0 / gamma));
 
             (*film)(x, y) = Color::VClamp(c, 0.0, 1.0) * 255.0;

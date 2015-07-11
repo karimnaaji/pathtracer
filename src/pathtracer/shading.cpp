@@ -46,7 +46,7 @@ Color Shade(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Objec
     Object *obj = isect.obj;
     Color c = obj->color; 
 
-    if(depth > 5) {
+    if(depth > 8) {
         return obj->emission;
     }
 
@@ -81,28 +81,48 @@ Color Shade(Scene *scene, const Ray& ray, int depth, const Vec2 &pixelPos, Objec
             break;
         case E_REFRACT:
             {
-                bool into = ray.d.Dot(isect.n); // entering into the medium?
+                bool into = ray.d.Dot(isect.n); 
+                Vec3 n = isect.n;
+                Vec3 nl = n.Dot(ray.d) < 0 ? n : n * -1;
 
-                float n1 = 1.0;
-                float n2 = 1.5;
+                Ray newRay(isect.p, ray.d - n * 2 * n.Dot(ray.d));     
 
-                float n1n2 = into ? (n1 / n2) : (n2 / n1);
-                float n1n22 = n1n2 * n1n2;
-                Vec3 n = into ? isect.n : -isect.n;
-                Vec3 r = ray.d;
-                float rn = r.Dot(n);
-                float a = 1 - n1n22 * (1 - rn*rn);
+                float nc = 1;
+                float nt = 1.5;
+                float nnt = into ? nc / nt : nt / nc;
+                float ddn = ray.d.Dot(nl);
+                float cos2t = 1 - nnt * nnt * (1 - ddn * ddn);
 
-                Ray refractRay;
-
-                if(a >= 0) {
-                    Vec3 d = r * n1n2 - n * (n1n2 * rn + sqrt(a));
-                    refractRay = Ray(ray.o, d);
-                } else {
-                    refractRay = ray; // total internal reflection
+                if (cos2t < 0) {
+                    return obj->emission + c * Shade(scene, newRay, depth + 1, pixelPos, obj); 
                 }
 
-                return obj->emission + c * Shade(scene, refractRay, depth + 1, pixelPos, obj);
+                Vec3 tdir = (ray.d * nnt - n * ((into ? 1 : - 1) * (ddn * nnt + sqrt(cos2t)))); 
+                tdir.Normalize();
+
+                float a = nt - nc;
+                float b = nt + nc;
+                float R0 = a * a / (b * b);
+                float d = 1 - (into ? -ddn : tdir.Dot(n)); 
+                float Re = R0 + (1 - R0) * d * d * d * d * d;
+                float Tr = 1 - Re;
+
+                if(depth > 2) {
+                    float P = .25 + .5 * Re;
+                    float r = rand_0_1();
+
+                    if (r < P) {
+                        float RP = Re / P;
+                        return obj->emission + c * Shade(scene, newRay, depth + 1, pixelPos, obj) * RP;
+                    } else {
+                        float TP = Tr / (1 - P); 
+                        return obj->emission + c * Shade(scene, Ray(isect.p, tdir), depth + 1, pixelPos, obj) * TP;
+                    }
+                } else {
+                    return obj->emission + c * 
+                       (Shade(scene, newRay, depth + 1, pixelPos, obj) * Re 
+                      + Shade(scene, Ray(isect.p, tdir), depth + 1, pixelPos, obj) * Tr); 
+                }
             }
             break;
     }

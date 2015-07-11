@@ -1,5 +1,5 @@
 #ifndef __RENDERER_H__
-#define __RENDERER_H_
+#define __RENDERER_H__
 
 #include <thread>
 #include <mutex>
